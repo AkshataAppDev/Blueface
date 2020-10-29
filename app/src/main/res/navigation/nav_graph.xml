@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/citiesListFragment"
+    tools:context=".ui.activity.MainActivity">
+
+    <fragment
+        android:id="@+id/addCity"
+        android:name="com.example.bluefacecodingchallenge.ui.addCity.AddCityFragment"
+        android:label="fragment_new_city"
+        tools:layout="@layout/fragment_add_city"/>
+    <fragment
+        android:id="@+id/citiesListFragment"
+        android:name="com.example.bluefacecodingchallenge.ui.cities.CitiesListFragment"
+        android:label="fragment_cities_list"
+        tools:layout="@layout/fragment_cities_list">
+        <action
+            android:id="@+id/action_citiesListFragment_to_newCityFragment"
+            app:destination="@id/addCity" />
+    </fragment>
+
+
+</navigation>
