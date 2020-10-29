@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bluefacecodingchallenge.R
 import com.example.bluefacecodingchallenge.database.CityEntity
@@ -41,7 +42,7 @@ class CitiesListFragment : BaseCityFragment() {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_citiesListFragment_to_newCityFragment)
         }
-
+        NavHostFragment.findNavController(this).graph.findNode(R.id.action_citiesListFragment_to_newCityFragment)
         setupRecyclerView()
         initSearch()
     }
@@ -64,13 +65,16 @@ class CitiesListFragment : BaseCityFragment() {
             emptyState.visibility = View.VISIBLE
             citiesList.visibility = View.GONE
             searchCity.visibility = View.GONE
+            addCity.visibility = View.GONE
             return
         }
 
         emptyState.visibility = View.GONE
         citiesList.visibility = View.VISIBLE
         searchCity.visibility = View.VISIBLE
+        addCity.visibility = View.VISIBLE
         adapter.list = cities as MutableList<CityEntity>
+
     }
 
     private fun initSearch() {

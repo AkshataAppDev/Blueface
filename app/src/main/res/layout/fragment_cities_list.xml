@@ -11,6 +11,7 @@
         android:id="@+id/searchCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="70dp"
         android:hint="@string/searchStringHint"
         android:padding="10dp"
         android:textColor="@color/white"
@@ -18,7 +19,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimaryDark"
         tools:layout_editor_absoluteX="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/searchCity"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/citiesList"

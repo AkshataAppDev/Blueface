@@ -11,19 +11,22 @@ import kotlinx.android.synthetic.main.city_list_item.view.*
 class CitiesListAdapter : RecyclerView.Adapter<CitiesListAdapter.CityViewHolder>() {
 
     var list = mutableListOf<CityEntity>()
-        set(value: MutableList<CityEntity>) {
-            list.clear()
-            list.addAll(value)
-            notifyDataSetChanged()
+        set(value) {
+            if (value != null) {
+                field.clear()
+                field.addAll(value)
+                notifyDataSetChanged()
+            }
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.city_list_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.city_list_item, parent, false)
         return CityViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return  list.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
@@ -33,8 +36,8 @@ class CitiesListAdapter : RecyclerView.Adapter<CitiesListAdapter.CityViewHolder>
     class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(data: CityEntity) {
-            itemView.city.text = data.cityname
-            itemView.rank.text = "${data.cityrank}"
+            itemView.city.text = "City : ${data.cityname}"
+            itemView.rank.text = "Rank : ${data.cityrank}"
             itemView.latLng.text = "Lat : ${data.citylat} Lon: ${data.citylon}"
         }
     }
