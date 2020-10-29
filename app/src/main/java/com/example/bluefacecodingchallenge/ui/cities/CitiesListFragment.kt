@@ -93,13 +93,14 @@ class CitiesListFragment : BaseCityFragment() {
                 before: Int,
                 count: Int
             ) {
+                setupRecyclerView()
                 filteredList = ArrayList()
                 if (charSequence.toString() != "") {
                     for (item in adapter.list) {
                         if (item.cityname?.contains(charSequence.toString(), true)!!) {
                             (filteredList as ArrayList<CityEntity>).add(item)
                         }
-                    }
+                    }   
                     adapter.list = filteredList
                 } else {
                     setupRecyclerView()
